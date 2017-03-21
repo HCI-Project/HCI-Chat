@@ -141,7 +141,12 @@ public class ChatFrame extends javax.swing.JFrame {
         filePathText = new javax.swing.JTextField();
         filePathButton = new javax.swing.JButton();
         sendFileButton = new javax.swing.JButton();
-        ListBackground = new javax.swing.JPanel();
+        TeamHeader = new javax.swing.JPanel();
+        TeamLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        TeamLabel2 = new javax.swing.JLabel();
+        Lists = new javax.swing.JTabbedPane();
+        ToDo = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
@@ -150,10 +155,20 @@ public class ChatFrame extends javax.swing.JFrame {
         ConflictLabel = new javax.swing.JLabel();
         ListHeader = new javax.swing.JPanel();
         TeamLabel1 = new javax.swing.JLabel();
-        TeamHeader = new javax.swing.JPanel();
-        TeamLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        TeamLabel2 = new javax.swing.JLabel();
+        Events = new javax.swing.JPanel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        meetings = new javax.swing.JLabel();
+        presentations = new javax.swing.JLabel();
+        keystone = new javax.swing.JLabel();
+        ListHeader1 = new javax.swing.JPanel();
+        TeamLabel3 = new javax.swing.JLabel();
+        Availability = new javax.swing.JPanel();
+        ListHeader2 = new javax.swing.JPanel();
+        TeamLabel4 = new javax.swing.JLabel();
+        table = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jMenu1.setText("jMenu1");
 
@@ -242,7 +257,55 @@ public class ChatFrame extends javax.swing.JFrame {
             }
         });
 
-        ListBackground.setBackground(new java.awt.Color(234, 247, 250));
+        TeamHeader.setBackground(new java.awt.Color(3, 92, 141));
+
+        TeamLabel.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
+        TeamLabel.setForeground(new java.awt.Color(255, 255, 255));
+        TeamLabel.setText("Team");
+
+        javax.swing.GroupLayout TeamHeaderLayout = new javax.swing.GroupLayout(TeamHeader);
+        TeamHeader.setLayout(TeamHeaderLayout);
+        TeamHeaderLayout.setHorizontalGroup(
+            TeamHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TeamHeaderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TeamLabel)
+                .addGap(55, 55, 55))
+        );
+        TeamHeaderLayout.setVerticalGroup(
+            TeamHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TeamHeaderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TeamLabel)
+                .addContainerGap())
+        );
+
+        jPanel1.setBackground(new java.awt.Color(24, 182, 210));
+
+        TeamLabel2.setFont(new java.awt.Font("Gadugi", 0, 48)); // NOI18N
+        TeamLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        TeamLabel2.setText("ChitterChat");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TeamLabel2)
+                .addGap(362, 362, 362))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(TeamLabel2)
+                .addGap(25, 25, 25))
+        );
+
+        Lists.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        ToDo.setBackground(new java.awt.Color(234, 247, 250));
 
         jCheckBox1.setBackground(new java.awt.Color(234, 247, 250));
         jCheckBox1.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
@@ -309,14 +372,14 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout ListBackgroundLayout = new javax.swing.GroupLayout(ListBackground);
-        ListBackground.setLayout(ListBackgroundLayout);
-        ListBackgroundLayout.setHorizontalGroup(
-            ListBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ToDoLayout = new javax.swing.GroupLayout(ToDo);
+        ToDo.setLayout(ToDoLayout);
+        ToDoLayout.setHorizontalGroup(
+            ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ListHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListBackgroundLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToDoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ListBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ResourcesLabel)
                     .addComponent(TasksLabel)
                     .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,9 +388,9 @@ public class ChatFrame extends javax.swing.JFrame {
                     .addComponent(ConflictLabel))
                 .addContainerGap())
         );
-        ListBackgroundLayout.setVerticalGroup(
-            ListBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListBackgroundLayout.createSequentialGroup()
+        ToDoLayout.setVerticalGroup(
+            ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ToDoLayout.createSequentialGroup()
                 .addComponent(ListHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(TasksLabel)
@@ -344,51 +407,174 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TeamHeader.setBackground(new java.awt.Color(3, 92, 141));
+        Lists.addTab("ToDo", ToDo);
 
-        TeamLabel.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
-        TeamLabel.setForeground(new java.awt.Color(255, 255, 255));
-        TeamLabel.setText("Team");
+        Events.setBackground(new java.awt.Color(234, 247, 250));
 
-        javax.swing.GroupLayout TeamHeaderLayout = new javax.swing.GroupLayout(TeamHeader);
-        TeamHeader.setLayout(TeamHeaderLayout);
-        TeamHeaderLayout.setHorizontalGroup(
-            TeamHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TeamHeaderLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(TeamLabel)
-                .addGap(55, 55, 55))
+        jCheckBox2.setBackground(new java.awt.Color(234, 247, 250));
+        jCheckBox2.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(3, 92, 141));
+        jCheckBox2.setText("task to complete...");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox5.setBackground(new java.awt.Color(234, 247, 250));
+        jCheckBox5.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
+        jCheckBox5.setForeground(new java.awt.Color(3, 92, 141));
+        jCheckBox5.setText("task to complete...");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox6.setBackground(new java.awt.Color(234, 247, 250));
+        jCheckBox6.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
+        jCheckBox6.setForeground(new java.awt.Color(3, 92, 141));
+        jCheckBox6.setText("task to complete...");
+        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox6ActionPerformed(evt);
+            }
+        });
+
+        meetings.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        meetings.setForeground(new java.awt.Color(3, 92, 141));
+        meetings.setText("Meetings");
+
+        presentations.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        presentations.setForeground(new java.awt.Color(3, 92, 141));
+        presentations.setText("Presentations");
+
+        keystone.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        keystone.setForeground(new java.awt.Color(3, 92, 141));
+        keystone.setText("Keystone Dates");
+
+        ListHeader1.setBackground(new java.awt.Color(3, 92, 141));
+
+        TeamLabel3.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
+        TeamLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        TeamLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TeamLabel3.setText("Meetings&Events:");
+
+        javax.swing.GroupLayout ListHeader1Layout = new javax.swing.GroupLayout(ListHeader1);
+        ListHeader1.setLayout(ListHeader1Layout);
+        ListHeader1Layout.setHorizontalGroup(
+            ListHeader1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListHeader1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(TeamLabel3)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        TeamHeaderLayout.setVerticalGroup(
-            TeamHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TeamHeaderLayout.createSequentialGroup()
+        ListHeader1Layout.setVerticalGroup(
+            ListHeader1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListHeader1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TeamLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        TeamLabel3.getAccessibleContext().setAccessibleName("Meetings&Events:");
+
+        javax.swing.GroupLayout EventsLayout = new javax.swing.GroupLayout(Events);
+        Events.setLayout(EventsLayout);
+        EventsLayout.setHorizontalGroup(
+            EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ListHeader1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EventsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TeamLabel)
+                .addGroup(EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(presentations)
+                    .addComponent(meetings)
+                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(keystone))
+                .addContainerGap())
+        );
+        EventsLayout.setVerticalGroup(
+            EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EventsLayout.createSequentialGroup()
+                .addComponent(ListHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(meetings)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox2)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox5)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox6)
+                .addGap(18, 18, 18)
+                .addComponent(presentations)
+                .addGap(18, 18, 18)
+                .addComponent(keystone)
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
+
+        Lists.addTab("Events", Events);
+
+        Availability.setBackground(new java.awt.Color(234, 247, 250));
+
+        ListHeader2.setBackground(new java.awt.Color(3, 92, 141));
+
+        TeamLabel4.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
+        TeamLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        TeamLabel4.setText("Availability");
+
+        javax.swing.GroupLayout ListHeader2Layout = new javax.swing.GroupLayout(ListHeader2);
+        ListHeader2.setLayout(ListHeader2Layout);
+        ListHeader2Layout.setHorizontalGroup(
+            ListHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListHeader2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(TeamLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ListHeader2Layout.setVerticalGroup(
+            ListHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListHeader2Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(TeamLabel4)
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(24, 182, 210));
+        jTable1.setAutoCreateColumnsFromModel(false);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        table.setViewportView(jTable1);
 
-        TeamLabel2.setFont(new java.awt.Font("Gadugi", 0, 48)); // NOI18N
-        TeamLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        TeamLabel2.setText("ChitterChat");
+        javax.swing.GroupLayout AvailabilityLayout = new javax.swing.GroupLayout(Availability);
+        Availability.setLayout(AvailabilityLayout);
+        AvailabilityLayout.setHorizontalGroup(
+            AvailabilityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ListHeader2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(AvailabilityLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        AvailabilityLayout.setVerticalGroup(
+            AvailabilityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AvailabilityLayout.createSequentialGroup()
+                .addComponent(ListHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TeamLabel2)
-                .addGap(362, 362, 362))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TeamLabel2)
-                .addGap(25, 25, 25))
-        );
+        Lists.addTab("Availability", Availability);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -399,7 +585,7 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(ListBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Lists, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chatScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,10 +601,10 @@ public class ChatFrame extends javax.swing.JFrame {
                                     .addComponent(sendMessageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(sendFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 1, Short.MAX_VALUE)))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                             .addComponent(TeamHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,7 +624,7 @@ public class ChatFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -467,7 +653,7 @@ public class ChatFrame extends javax.swing.JFrame {
                         .addComponent(TeamHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ListBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Lists))
                 .addContainerGap())
         );
 
@@ -553,6 +739,18 @@ public class ChatFrame extends javax.swing.JFrame {
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
+
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
     public void RetryStart(int port){
         if(server != null){ server.stop(); }
         //server = new SocketServer(this, port);
@@ -574,32 +772,47 @@ public class ChatFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Availability;
     private javax.swing.JLabel ConflictLabel;
-    private javax.swing.JPanel ListBackground;
+    private javax.swing.JPanel Events;
     private javax.swing.JPanel ListHeader;
+    private javax.swing.JPanel ListHeader1;
+    private javax.swing.JPanel ListHeader2;
+    private javax.swing.JTabbedPane Lists;
     private javax.swing.JLabel ResourcesLabel;
     private javax.swing.JLabel TasksLabel;
     private javax.swing.JPanel TeamHeader;
     private javax.swing.JLabel TeamLabel;
     private javax.swing.JLabel TeamLabel1;
     private javax.swing.JLabel TeamLabel2;
+    private javax.swing.JLabel TeamLabel3;
+    private javax.swing.JLabel TeamLabel4;
+    private javax.swing.JPanel ToDo;
     private javax.swing.JScrollPane chatScroll;
     public javax.swing.JTextArea chatText;
     public javax.swing.JButton filePathButton;
     public javax.swing.JTextField filePathText;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel keystone;
     public javax.swing.JButton loginButton;
+    private javax.swing.JLabel meetings;
     public javax.swing.JTextField messageText;
     private javax.swing.JLabel passwordLabel;
     public javax.swing.JPasswordField passwordText;
+    private javax.swing.JLabel presentations;
     public javax.swing.JButton sendFileButton;
     public javax.swing.JButton sendMessageButton;
     public javax.swing.JButton signUpButton;
+    private javax.swing.JScrollPane table;
     public javax.swing.JList userList;
     private javax.swing.JLabel usernameLabel;
     public javax.swing.JTextField usernameText;
