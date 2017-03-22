@@ -1,5 +1,8 @@
 package javaapplication1;
 
+import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,11 +16,18 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JScrollBar;
+import javax.swing.JTextField;
+import static javax.swing.SwingConstants.BOTTOM;
 import javax.swing.UIManager;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.TableView.TableCell;
 import jserver.SocketServer;
 
 public class ChatFrame extends javax.swing.JFrame {
@@ -124,8 +134,13 @@ public class ChatFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jMenu1 = new javax.swing.JMenu();
+        create = new javax.swing.JDialog();
+        input = new javax.swing.JTextField();
+        submit = new javax.swing.JButton();
+        task = new javax.swing.JCheckBox();
         usernameText = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
@@ -147,30 +162,85 @@ public class ChatFrame extends javax.swing.JFrame {
         TeamLabel2 = new javax.swing.JLabel();
         Lists = new javax.swing.JTabbedPane();
         ToDo = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        TasksLabel = new javax.swing.JLabel();
-        ResourcesLabel = new javax.swing.JLabel();
-        ConflictLabel = new javax.swing.JLabel();
         ListHeader = new javax.swing.JPanel();
         TeamLabel1 = new javax.swing.JLabel();
-        Events = new javax.swing.JPanel();
+        TasksLabel = new javax.swing.JLabel();
+        taskAdd = new javax.swing.JButton();
+        ResourcesLabel = new javax.swing.JLabel();
+        resourceAdd = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        ConflictLabel = new javax.swing.JLabel();
+        conflictAdd = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        taskList = new javax.swing.JPanel();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        Events = new javax.swing.JPanel();
         meetings = new javax.swing.JLabel();
         presentations = new javax.swing.JLabel();
         keystone = new javax.swing.JLabel();
         ListHeader1 = new javax.swing.JPanel();
         TeamLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Availability = new javax.swing.JPanel();
         ListHeader2 = new javax.swing.JPanel();
         TeamLabel4 = new javax.swing.JLabel();
-        table = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         jMenu1.setText("jMenu1");
+
+        create.setTitle("Add Task");
+        create.setAlwaysOnTop(true);
+        create.setForeground(java.awt.Color.lightGray);
+        create.setLocation(new java.awt.Point(150, 150));
+        create.setLocationByPlatform(true);
+        create.setResizable(false);
+        create.setSize(new java.awt.Dimension(400, 200));
+        create.setType(java.awt.Window.Type.POPUP);
+
+        input.setText("jTextField1");
+        input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputActionPerformed(evt);
+            }
+        });
+
+        submit.setText("Submit");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout createLayout = new javax.swing.GroupLayout(create.getContentPane());
+        create.getContentPane().setLayout(createLayout);
+        createLayout.setHorizontalGroup(
+            createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(submit)
+                .addGap(20, 20, 20))
+        );
+        createLayout.setVerticalGroup(
+            createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(submit)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        task.setText("jCheckBox3");
+        task.setOpaque(true);
+        task.getAccessibleContext().setAccessibleParent(taskList);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(64, 174, 208));
@@ -304,50 +374,14 @@ public class ChatFrame extends javax.swing.JFrame {
         );
 
         Lists.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        Lists.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ListsStateChanged(evt);
+            }
+        });
 
         ToDo.setBackground(new java.awt.Color(234, 247, 250));
-
-        jCheckBox1.setBackground(new java.awt.Color(234, 247, 250));
-        jCheckBox1.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(3, 92, 141));
-        jCheckBox1.setText("task to complete...");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox3.setBackground(new java.awt.Color(234, 247, 250));
-        jCheckBox3.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(3, 92, 141));
-        jCheckBox3.setText("task to complete...");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox4.setBackground(new java.awt.Color(234, 247, 250));
-        jCheckBox4.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
-        jCheckBox4.setForeground(new java.awt.Color(3, 92, 141));
-        jCheckBox4.setText("task to complete...");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
-            }
-        });
-
-        TasksLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        TasksLabel.setForeground(new java.awt.Color(3, 92, 141));
-        TasksLabel.setText("Tasks");
-
-        ResourcesLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        ResourcesLabel.setForeground(new java.awt.Color(3, 92, 141));
-        ResourcesLabel.setText("Resources");
-
-        ConflictLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        ConflictLabel.setForeground(new java.awt.Color(3, 92, 141));
-        ConflictLabel.setText("Conflicts");
+        ToDo.setAutoscrolls(true);
 
         ListHeader.setBackground(new java.awt.Color(3, 92, 141));
 
@@ -362,7 +396,7 @@ public class ChatFrame extends javax.swing.JFrame {
             .addGroup(ListHeaderLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(TeamLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         ListHeaderLayout.setVerticalGroup(
             ListHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,20 +406,101 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        TasksLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        TasksLabel.setForeground(new java.awt.Color(3, 92, 141));
+        TasksLabel.setText("Tasks");
+
+        taskAdd.setText("+");
+        taskAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskAddActionPerformed(evt);
+            }
+        });
+
+        ResourcesLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        ResourcesLabel.setForeground(new java.awt.Color(3, 92, 141));
+        ResourcesLabel.setText("Resources");
+
+        resourceAdd.setText("+");
+        resourceAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resourceAddActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setBackground(new java.awt.Color(234, 247, 250));
+        jCheckBox1.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(3, 92, 141));
+        jCheckBox1.setText("task to complete...");
+        jCheckBox1.setAutoscrolls(true);
+        jCheckBox1.setContentAreaFilled(false);
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jCheckBox1);
+
+        ConflictLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        ConflictLabel.setForeground(new java.awt.Color(3, 92, 141));
+        ConflictLabel.setText("Conflicts");
+
+        conflictAdd.setText("+");
+
+        taskList.setAutoscrolls(true);
+        taskList.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                taskListComponentAdded(evt);
+            }
+        });
+
+        jCheckBox2.setText("jCheckBox2");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout taskListLayout = new javax.swing.GroupLayout(taskList);
+        taskList.setLayout(taskListLayout);
+        taskListLayout.setHorizontalGroup(
+            taskListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(taskListLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        taskListLayout.setVerticalGroup(
+            taskListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(taskListLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox2)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout ToDoLayout = new javax.swing.GroupLayout(ToDo);
         ToDo.setLayout(ToDoLayout);
         ToDoLayout.setHorizontalGroup(
             ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ListHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToDoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(ToDoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ResourcesLabel)
-                    .addComponent(TasksLabel)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ConflictLabel))
+                    .addComponent(taskList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ToDoLayout.createSequentialGroup()
+                        .addComponent(ConflictLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(conflictAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ToDoLayout.createSequentialGroup()
+                        .addComponent(TasksLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(taskAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ToDoLayout.createSequentialGroup()
+                        .addComponent(ResourcesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(resourceAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         ToDoLayout.setVerticalGroup(
@@ -393,53 +508,29 @@ public class ChatFrame extends javax.swing.JFrame {
             .addGroup(ToDoLayout.createSequentialGroup()
                 .addComponent(ListHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TasksLabel)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox3)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox4)
-                .addGap(18, 18, 18)
-                .addComponent(ResourcesLabel)
-                .addGap(18, 18, 18)
-                .addComponent(ConflictLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TasksLabel)
+                    .addComponent(taskAdd))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(taskList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ResourcesLabel)
+                    .addComponent(resourceAdd))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConflictLabel)
+                    .addComponent(conflictAdd))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Lists.addTab("ToDo", ToDo);
 
         Events.setBackground(new java.awt.Color(234, 247, 250));
-
-        jCheckBox2.setBackground(new java.awt.Color(234, 247, 250));
-        jCheckBox2.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(3, 92, 141));
-        jCheckBox2.setText("task to complete...");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox5.setBackground(new java.awt.Color(234, 247, 250));
-        jCheckBox5.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
-        jCheckBox5.setForeground(new java.awt.Color(3, 92, 141));
-        jCheckBox5.setText("task to complete...");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox6.setBackground(new java.awt.Color(234, 247, 250));
-        jCheckBox6.setFont(new java.awt.Font("Gadugi", 0, 13)); // NOI18N
-        jCheckBox6.setForeground(new java.awt.Color(3, 92, 141));
-        jCheckBox6.setText("task to complete...");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
-            }
-        });
 
         meetings.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         meetings.setForeground(new java.awt.Color(3, 92, 141));
@@ -467,7 +558,7 @@ public class ChatFrame extends javax.swing.JFrame {
             .addGroup(ListHeader1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(TeamLabel3)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ListHeader1Layout.setVerticalGroup(
             ListHeader1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,7 +568,11 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TeamLabel3.getAccessibleContext().setAccessibleName("Meetings&Events:");
+        jLabel1.setText("Meeting 1 @ 3/30, 1930 in CSE 119");
+
+        jLabel2.setText("Meeting 2 @ 4/01, 1500 in Dungeon");
+
+        jLabel3.setText("Meeting 3 @ 4/04, 1230 in Marston Newton");
 
         javax.swing.GroupLayout EventsLayout = new javax.swing.GroupLayout(Events);
         Events.setLayout(EventsLayout);
@@ -485,15 +580,15 @@ public class ChatFrame extends javax.swing.JFrame {
             EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ListHeader1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EventsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(presentations)
-                    .addComponent(meetings)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(keystone))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(presentations, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(meetings, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(keystone, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         EventsLayout.setVerticalGroup(
             EventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,16 +597,16 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(meetings)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox2)
+                .addComponent(jLabel1)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox5)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox6)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(25, 25, 25)
                 .addComponent(presentations)
                 .addGap(18, 18, 18)
                 .addComponent(keystone)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         Lists.addTab("Events", Events);
@@ -541,19 +636,74 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setAutoCreateColumnsFromModel(false);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"1200", "0", "0", "0", "0", "0", "0", "0"},
+                {"1230", "0", "0", "0", "0", "0", "0", "0"},
+                {"1300", "0", "0", "0", "0", "0", "0", "0"},
+                {"1330", "0", "0", "0", "0", "0", "0", "0"},
+                {"1400", "0", "0", "0", "0", "0", "0", "0"},
+                {"1430", "0", "0", "0", "0", "0", "0", "0"},
+                {"1500", "0", "0", "0", "0", "0", "0", "0"},
+                {"1530", "0", "0", "0", "0", "0", "0", "0"},
+                {"1600", "0", "0", "0", "0", "0", "0", "0"},
+                {"1630", "0", "0", "0", "0", "0", "0", "0"},
+                {"1700", "0", "0", "0", "0", "0", "0", "0"},
+                {"1730", "0", "0", "0", "0", "0", "0", "0"},
+                {"1800", "0", "0", "0", "0", "0", "0", "0"},
+                {"1830", "0", "0", "0", "0", "0", "0", "0"},
+                {"1900", "0", "0", "0", "0", "0", "0", "0"},
+                {"1930", "0", "0", "0", "0", "0", "0", "0"},
+                {"2000", "0", "0", "0", "0", "0", "0", "0"},
+                {"2030", "0", "0", "0", "0", "0", "0", "0"},
+                {"2100", "0", "0", "0", "0", "0", "0", "0"},
+                {"2130", "0", "0", "0", "0", "0", "0", "0"}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Time", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"
             }
         ));
-        table.setViewportView(jTable1);
+        jTable2.setCellSelectionEnabled(true);
+        jTable2.setDragEnabled(true);
+        jTable2.setGridColor(new java.awt.Color(51, 51, 51));
+        jTable2.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable2.setShowGrid(true);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable2, org.jdesktop.beansbinding.ELProperty.create("${selectedElement}"), jTable2, org.jdesktop.beansbinding.BeanProperty.create("selectedElements"));
+        bindingGroup.addBinding(binding);
+
+        jTable2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTable2MouseDragged(evt);
+            }
+        });
+        jTable2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable2FocusGained(evt);
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable2MouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jTable2.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTable2InputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        jTable2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTable2PropertyChange(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable2);
+        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout AvailabilityLayout = new javax.swing.GroupLayout(Availability);
         Availability.setLayout(AvailabilityLayout);
@@ -562,7 +712,7 @@ public class ChatFrame extends javax.swing.JFrame {
             .addComponent(ListHeader2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(AvailabilityLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AvailabilityLayout.setVerticalGroup(
@@ -570,8 +720,8 @@ public class ChatFrame extends javax.swing.JFrame {
             .addGroup(AvailabilityLayout.createSequentialGroup()
                 .addComponent(ListHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         Lists.addTab("Availability", Availability);
@@ -657,6 +807,8 @@ public class ChatFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -732,25 +884,79 @@ public class ChatFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void jTable2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable2PropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_jTable2PropertyChange
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jTable2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2MouseDragged
+
+    private void jTable2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable2InputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2InputMethodTextChanged
+
+    private void jTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseReleased
+        // TODO add your handling code here:
+        for(int i = 1; i < jTable2.getRowCount(); i++){
+            for(int j = 0; j < jTable2.getColumnCount(); j++){
+                if(jTable2.isCellSelected(i, j)){
+                    Object val = jTable2.getValueAt(i, j);
+                    if( val.equals(1)){
+                        val = 0;
+                    }
+                    else{
+                        val = 1;
+                    }
+                    jTable2.setValueAt(val, i, j);
+                }
+            }
+        }
+    }//GEN-LAST:event_jTable2MouseReleased
+
+    private void jTable2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable2FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2FocusGained
+
+    private void resourceAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resourceAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resourceAddActionPerformed
+
+    private void taskAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAddActionPerformed
+        // TODO add your handling code here:
+        create.setVisible(true);
+    }//GEN-LAST:event_taskAddActionPerformed
+
+    private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputActionPerformed
+        JCheckBox task2= new JCheckBox();
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        // TODO add your handling code here:
+        task = new JCheckBox();
+        task.setText(input.getText()); 
+        create.setVisible(false);
+        //task.setVisible(true);
+        taskList.add(task);
+    }//GEN-LAST:event_submitActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void taskListComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_taskListComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+       // taskList.isAncestorOf(task);
+       // taskList.add(task);
+    }//GEN-LAST:event_taskListComponentAdded
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void ListsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ListsStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+    }//GEN-LAST:event_ListsStateChanged
     public void RetryStart(int port){
         if(server != null){ server.stop(); }
         //server = new SocketServer(this, port);
@@ -790,18 +996,23 @@ public class ChatFrame extends javax.swing.JFrame {
     private javax.swing.JPanel ToDo;
     private javax.swing.JScrollPane chatScroll;
     public javax.swing.JTextArea chatText;
+    private javax.swing.JButton conflictAdd;
+    private javax.swing.JDialog create;
     public javax.swing.JButton filePathButton;
     public javax.swing.JTextField filePathText;
+    private javax.swing.JTextField input;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel keystone;
     public javax.swing.JButton loginButton;
     private javax.swing.JLabel meetings;
@@ -809,12 +1020,17 @@ public class ChatFrame extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     public javax.swing.JPasswordField passwordText;
     private javax.swing.JLabel presentations;
+    private javax.swing.JButton resourceAdd;
     public javax.swing.JButton sendFileButton;
     public javax.swing.JButton sendMessageButton;
     public javax.swing.JButton signUpButton;
-    private javax.swing.JScrollPane table;
+    private javax.swing.JButton submit;
+    private javax.swing.JCheckBox task;
+    private javax.swing.JButton taskAdd;
+    private javax.swing.JPanel taskList;
     public javax.swing.JList userList;
     private javax.swing.JLabel usernameLabel;
     public javax.swing.JTextField usernameText;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
