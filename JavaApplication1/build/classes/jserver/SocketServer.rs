@@ -1,2 +1,0 @@
-jserver.SocketServer
-jserver.ServerThread
